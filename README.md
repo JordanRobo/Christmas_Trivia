@@ -1,38 +1,43 @@
-# create-svelte
+# Family Christmas Trivia App
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Overview
+Welcome to the Family Christmas Trivia App, an engaging and interactive way to enjoy trivia games with your family this holiday season! Our app offers a unique experience that allows a "Presenter" to manage the game through a Dashboard, while players join in through a separate "Player" interface. Keep track of scores, buzz in to answer questions, and enjoy a seamless trivia experience powered by the latest web technologies.
 
-## Creating a project
+## Features
+- **Presenter Dashboard**: A centralized control panel for the trivia host to manage questions, track scores, and oversee the game.
+- **Player Interface**: An intuitive and responsive interface for players to join the game, buzz in, and view their scores.
+- **Real-time Interaction**: Utilizing Socket.io for live updates and interactions between the presenter and players.
+- **Score Tracking**: Automated scoring system to keep the competition fair and exciting.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Technologies Used
+- **SvelteKit**: For building a high-performance frontend.
+- **Node.js**: Backing the server-side logic.
+- **Skeleton.dev**: Ensuring a sleek, responsive design.
+- **Socket.io**: Enabling real-time, bidirectional event-based communication.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Installation
+To set up the Family Christmas Trivia App:
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+1. Clone the repository:
+   ```
+   git clone [repository URL]
+   ```
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the server:
+   ```
+   npm run dev
+   ```
 
-## Developing
+## Usage
+- **Starting the Game**: Launch the app and log in as a Presenter to start a new trivia game.
+- **Joining as a Player**: Players can join the game using a unique code provided by the Presenter.
+- **Playing the Game**: Answer trivia questions, buzz in through the Player interface, and track your scores in real time.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Contributing
+Contributions to the Family Christmas Trivia App are welcome! Please read our contributing guidelines before submitting your pull requests.
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Contact
+For any queries or suggestions, feel free to contact jordan@stateot.art.
