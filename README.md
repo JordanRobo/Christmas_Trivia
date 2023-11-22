@@ -20,7 +20,7 @@ To set up the Family Christmas Trivia App:
 
 1. Clone the repository:
    ```
-   git clone [repository URL]
+   git clone https://github.com/JordanRobo/Christmas_Trivia.git
    ```
 2. Install dependencies:
    ```
