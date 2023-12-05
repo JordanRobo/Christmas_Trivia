@@ -20,7 +20,10 @@
 	<!-- (sidebarRight) -->
 	<svelte:fragment slot="pageHeader"></svelte:fragment>
 	<!-- Router Slot -->
-	<slot />
+	<div class="container mx-auto"> 
+		<slot />
+	</div>
+	
 	<!-- ---- / ---- -->
 	<svelte:fragment slot="pageFooter"></svelte:fragment>
 	<!-- (footer) -->

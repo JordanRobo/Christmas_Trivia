@@ -1,38 +1,22 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    let playersBuzzedIn: any[] = [];
-    let ws: WebSocket;
-
+    import io from 'socket.io-client';
+  
+    let socket: any;
+  
     onMount(() => {
-        ws = new WebSocket('wss://your-websocket-server.com');
-        ws.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            if (data.type === 'playerBuzzed') {
-                playersBuzzedIn.push(data.player);
-                // Handle player buzz-in logic
-            }
-            // ... other message handlers
-        };
+      socket = io('http://localhost:3001'); // Adjust the URL to match your server
     });
-
-    function handlePlayerBet(player: any) {
-        // Logic for handling player bets
-    }
-
+  
     function nextQuestion() {
-        // Implement logic to go to the next question
+      socket.emit('nextQuestion');
     }
-
-    function nextRound() {
-        // Implement logic to go to the next round
-    }
-</script>
-
-<button on:click={nextQuestion}>Next Question</button>
-<button on:click={nextRound}>Next Round</button>
-
-{#each playersBuzzedIn as player}
-    <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div on:click={() => handlePlayerBet(player)}>{player}</div>
-{/each}
+  </script>
+  
+  <div class="flex justify-center my-8">
+    <div class="flex-col text-center">
+    <button on:click={nextQuestion} class="btn btn-xl variant-ghost-error hover:variant-filled-error">
+      Next Question
+    </button>
+  </div>
+</div>

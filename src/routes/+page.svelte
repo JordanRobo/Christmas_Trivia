@@ -10,6 +10,7 @@
         // Logic to join an existing game
         goto('/join')
     }
+
 </script>
   
 <main>
