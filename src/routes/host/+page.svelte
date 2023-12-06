@@ -10,6 +10,11 @@
 
   onMount(() => {
     socket = io('http://localhost:3001'); // Adjust the URL to match your server
+
+    socket.on('playerBuzzed', (data) => {
+      console.log ('Player Buzzed in', data.playerName);
+      gameStore.setLastBuzzedPlayer(data.playerName);
+    });
   });
 
   function handleScoreUpdate(isCorrect) {
@@ -30,7 +35,7 @@
 <div class="flex justify-center my-8">
   <div class="flex-col text-center">
     <div class="py-2">
-      <input class="input" type="number" bind:value={points} />
+      <input class="input text-center" type="number" bind:value={points} />
     </div>
     <div class="py-2">
       <button on:click={() => handleScoreUpdate(true)} class="btn btn-xl variant-ghost-success hover:variant-filled-success">

@@ -37,10 +37,19 @@ function setLastBuzzedPlayer(playerName: string): void {
   });
 }
 
+
 // Function to set the buzz-in acceptance state
 function setBuzzInAccepted(newState: boolean): void {
   gameStore.update(state => {
     return { ...state, buzzInAccepted: newState };
+  });
+}
+
+// Function to set the current player
+function setCurrentPlayer(playerName: string): void {
+  gameStore.update(state => {
+    const newScore = state.players[playerName]?.score ?? 100;
+    return { ...state, currentPlayer: playerName, currentPlayerScore: newScore };
   });
 }
 
@@ -52,14 +61,6 @@ function updatePlayerScore(playerName: string, newScore: number): void {
       updatedPlayers[playerName].score = newScore;
     }
     return { ...state, players: updatedPlayers };
-  });
-}
-
-// Function to set the current player
-function setCurrentPlayer(playerName: string): void {
-  gameStore.update(state => {
-    const newScore = state.players[playerName]?.score ?? 100;
-    return { ...state, currentPlayer: playerName, currentPlayerScore: newScore };
   });
 }
 

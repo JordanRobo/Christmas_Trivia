@@ -5,8 +5,8 @@
   import gameStore from '$lib/gameStore';
 
   let socket: any;
-  let playerName = '';
-  let score = 100;
+  let playerName: string;
+  let score: number;
 
   // Decode the player name from the URL parameter
   $: playerName = decodeURIComponent($page.params.localPlayerName);
@@ -41,8 +41,7 @@
 
 <div class="flex justify-center my-8">
   <div class="flex-col text-center">
-    <div class="py-4"><h2 class="h2">{playerName}</h2></div>
-    <div class="py-4"><h1 class="h1">Score: {score}</h1></div>
+    <div class="py-4"><h1 class="h1">{playerName}</h1></div>
     <div class="py-4">
       <button on:click={buzzIn} class="btn btn-xl variant-ghost-error hover:variant-filled-error">Buzz In</button>
     </div>

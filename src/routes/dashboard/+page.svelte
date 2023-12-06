@@ -6,7 +6,7 @@
   let socket: any;
 
   let players = {};
-  let lastBuzzedPlayer = '';
+  let lastBuzzedPlayer: string;
   let buzzInAccepted = true;
 
   const unsubscribe = gameStore.subscribe(state => {
@@ -57,11 +57,11 @@
   <div class="py-4">
     <div class="card variant-filled-warning py-4">
       <p class="h4 text-white">Last player buzzed in</p>
-      <p class="h4 text-white">
+      <h2 class="h2 text-white">
         {#if lastBuzzedPlayer && !buzzInAccepted}
           {lastBuzzedPlayer}
         {/if}
-      </p>
+      </h2>
     </div>
   </div>
 </div>
