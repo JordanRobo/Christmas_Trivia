@@ -41,9 +41,9 @@
 
 <div class="flex justify-center my-8">
   <div class="flex-col text-center">
-    <div class="py-4"><h1 class="h1">{playerName}</h1></div>
+    <div class="py-4"><p class="p text-6xl">{playerName}</p></div>
     <div class="py-4">
-      <button on:click={buzzIn} class="btn btn-xl variant-ghost-error hover:variant-filled-error">Buzz In</button>
+      <button on:click={buzzIn} class="btn btn-xl variant-ghost-error hover:variant-filled-error text-4xl">Buzz In</button>
     </div>
   </div>
 </div>

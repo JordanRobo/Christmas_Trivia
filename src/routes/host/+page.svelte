@@ -38,16 +38,14 @@
       <input class="input text-center" type="number" bind:value={points} />
     </div>
     <div class="py-2">
-      <button on:click={() => handleScoreUpdate(true)} class="btn btn-xl variant-ghost-success hover:variant-filled-success">
-        Correct Answer</button>
+      <button on:click={() => handleScoreUpdate(true)} class="btn btn-lg variant-ghost-success hover:variant-filled-success">
+        Plus</button>
+      <button on:click={() => handleScoreUpdate(false)} class="btn btn-lg variant-ghost-error hover:variant-filled-error">
+        Minus</button>
     </div>
-    <div class="py-2">
-      <button on:click={() => handleScoreUpdate(false)} class="btn btn-xl variant-ghost-error hover:variant-filled-error">
-        Incorrect Answer</button>
-    </div>
-    <div class="py-2">
-      <button on:click={nextQuestion} class="btn btn-xl variant-ghost-warning hover:variant-filled-warning">
-        Next Question</button>
+    <div class="py-2 w-full">
+      <button on:click={nextQuestion} class="btn btn-lg variant-ghost-warning hover:variant-filled-warning">
+        Buzzer Reset</button>
     </div>    
   </div>
 </div>

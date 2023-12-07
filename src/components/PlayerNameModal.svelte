@@ -27,12 +27,12 @@
 
 </script>
 
-<div class="card p-6 variant-soft-surface">
+<div class="card p-6 bg-gradient-to-br variant-gradient-secondary-primary">
   <div class="my-4 text-center">
     <h2 class="h2 my-6">Enter Your Details</h2>
     <input class="input" type="text" bind:value={localPlayerName} placeholder="Your Name"/>
   </div>
   <div class="my-4 text-center">
-    <button on:click={submitPlayerInfo} class="btn btn-xl variant-ghost-success hover:variant-filled-success">Submit</button>
+    <button on:click={submitPlayerInfo} class="btn btn-xl variant-ghost-warning hover:variant-filled-warning">Submit</button>
   </div>
 </div>

@@ -17,9 +17,12 @@
 
 </script>
   
-<main>
-    <div class="flex justify-center my-4 gap-4">
-        <button on:click={host} class="btn btn-xl variant-ghost-secondary hover:variant-filled-secondary">Join as Host</button>
-        <button on:click={() => modalStore.trigger(modal)} class="btn btn-xl variant-ghost-secondary hover:variant-filled-secondary">Join as Player</button>
+<main class="container">
+    <div class="flex flex-col justify-center my-4 gap-4 md:flex-row">
+        <div class="self-center">
+            <button on:click={host} class="btn btn-xl variant-ghost-primary hover:variant-filled-primary">Join as Host</button>
+        </div>
+        <div class="self-center">
+            <button on:click={() => modalStore.trigger(modal)} class="btn btn-xl variant-ghost-primary hover:variant-filled-primary">Join as Player</button>
     </div> 
 </main>

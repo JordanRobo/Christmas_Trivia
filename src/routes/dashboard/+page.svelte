@@ -8,9 +8,15 @@
   let players = {};
   let lastBuzzedPlayer: string;
   let buzzInAccepted = true;
+  let sortedPlayers = [];
 
   const unsubscribe = gameStore.subscribe(state => {
     ({ players, lastBuzzedPlayer, buzzInAccepted } = state);
+  });
+
+  $: sortedPlayers = Object.entries(players).sort((a, b) => {
+    // Assuming each entry is of the form [playerName, { score }]
+    return b[1].score - a[1].score; // Sort in descending order of score
   });
 
   onMount(() => {
@@ -48,20 +54,20 @@
     <h1 class="h1">Player Dashboard</h1>
   </div>
   <div class="py-4">
-    <ul class="h2">
-      {#each Object.entries(players) as [playerName, { score }] (playerName)}
-        <li>{playerName}: {score}</li>
-      {/each}
+    <ul class="p text-4xl">
+      {#each sortedPlayers as [playerName, { score }] (playerName)}
+      <li>{score} - {playerName}</li>
+    {/each}
     </ul>
   </div>
   <div class="py-4">
-    <div class="card variant-filled-warning py-4">
-      <p class="h4 text-white">Last player buzzed in</p>
-      <h2 class="h2 text-white">
+    <div class="card variant-ghost-tertiary py-4">
+      <p class="p text-2xl text-white">Last player buzzed in</p>
+      <p class="p text-4xl text-white">
         {#if lastBuzzedPlayer && !buzzInAccepted}
           {lastBuzzedPlayer}
         {/if}
-      </h2>
+      </p>
     </div>
   </div>
 </div>

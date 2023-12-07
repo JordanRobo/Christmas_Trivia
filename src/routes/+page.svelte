@@ -13,10 +13,14 @@
 
 </script>
   
-<main>
-    <div class="flex justify-center my-4 gap-4">
-        <button on:click={startGame} class="btn btn-xl variant-ghost-secondary hover:variant-filled-secondary">Start a New Game</button>
-        <button on:click={joinGame} class="btn btn-xl variant-ghost-secondary hover:variant-filled-secondary">Join a Game</button>
+<main class="container">
+    <div class="flex flex-col justify-center my-4 gap-4 md:flex-row">
+        <div class="self-center">
+            <button on:click={startGame} class="btn btn-xl variant-ghost-primary hover:variant-filled-primary">Start a New Game</button>
+        </div>
+        <div class="self-center">
+            <button on:click={joinGame} class="btn btn-xl variant-ghost-primary hover:variant-filled-primary">Join a Game</button>
+        </div>
     </div> 
 </main>
   
