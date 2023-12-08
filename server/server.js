@@ -1,6 +1,8 @@
+import { createServer } from "http";
 import { Server } from "socket.io";
 
-const io = new Server(3001, {
+const httpServer = createServer();
+const io = new Server(httpServer, {
   cors: {
     origin: '*',
   },
@@ -21,16 +23,17 @@ io.on('connection', (socket) => {
   // Handle a player joining
   socket.on('playerJoined', (data) => {
     const playerName = data.playerName;
-
+  
     if (typeof playerName === 'string' && playerName.trim() !== '') {
       if (!players[playerName]) {
-        players[playerName] = { score: 100 }; // Starting score of 100
+        players[playerName] = { score: 100, socketId: socket.id }; // Store socketId here
       }
       io.emit('playersListUpdate', players);
     } else {
       console.error('Invalid player name received');
     }
   });
+  
 
   // Handle a player buzzing in
   socket.on('buzzIn', (data) => {
@@ -68,4 +71,5 @@ io.on('connection', (socket) => {
   });
 });
 
-console.log('WebSocket server is running on port 3001');
+httpServer.listen(process.env.PORT);
+console.log('WebSocket server is running');

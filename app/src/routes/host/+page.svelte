@@ -9,7 +9,7 @@
   $: console.log('Current lastBuzzedPlayer:', $gameStore.lastBuzzedPlayer);
 
   onMount(() => {
-    socket = io('http://localhost:3001'); // Adjust the URL to match your server
+    socket = io(import.meta.env.VITE_BACKEND_URL); // Adjust the URL to match your server
 
     socket.on('playerBuzzed', (data) => {
       console.log ('Player Buzzed in', data.playerName);
