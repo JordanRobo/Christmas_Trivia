@@ -26,13 +26,14 @@
   }
 
 </script>
-
-<div class="card p-6 bg-gradient-to-br variant-gradient-secondary-primary">
+<main class="">
+<div class="card p-6 variant-ghost-secondary">
   <div class="my-4 text-center">
-    <h2 class="h2 my-6">Enter Your Details</h2>
+    <h2 class="h2 my-6">Who Are you?</h2>
     <input class="input" type="text" bind:value={localPlayerName} placeholder="Your Name"/>
   </div>
   <div class="my-4 text-center">
-    <button on:click={submitPlayerInfo} class="btn btn-xl variant-ghost-warning hover:variant-filled-warning">Submit</button>
+    <button on:click={submitPlayerInfo} class="btn btn-xl variant-filled-primary">Submit</button>
   </div>
 </div>
+</main>

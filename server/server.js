@@ -23,22 +23,21 @@ io.on('connection', (socket) => {
   // Handle a player joining
   socket.on('playerJoined', (data) => {
     const playerName = data.playerName;
-  
+
     if (typeof playerName === 'string' && playerName.trim() !== '') {
       if (!players[playerName]) {
-        players[playerName] = { score: 100, socketId: socket.id }; // Store socketId here
+        players[playerName] = { score: 100 }; // Starting score of 100
       }
       io.emit('playersListUpdate', players);
     } else {
       console.error('Invalid player name received');
     }
   });
-  
 
   // Handle a player buzzing in
   socket.on('buzzIn', (data) => {
-    console.log('Buzz-in received:', data);
     const playerName = data.playerName;
+    console.log(`${playerName} buzzed in`);
     if (buzzInAccepted && typeof playerName === 'string') {
       buzzInAccepted = false; 
       io.emit('playerBuzzed', { playerName });
@@ -69,7 +68,17 @@ io.on('connection', (socket) => {
       }
     }
   });
+
+  socket.on('connect_error', (err) => {
+    console.error('Socket connection error:', err);
 });
 
-httpServer.listen(process.env.PORT);
-console.log('WebSocket server is running');
+  socket.on('connect_timeout', (timeout) => {
+    console.error('Socket connection timeout:', timeout);
+});
+});
+
+const PORT = process.env.PORT || 3001;
+httpServer.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

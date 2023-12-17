@@ -24,9 +24,10 @@ const config = {
 		forms,
 		skeleton({
 			themes: {
-				custom: [
-					myCustomTheme
-				]
+				preset: [
+					// Enable 'enhancements' per each registered theme:
+					{ name: "modern", enhancements: true }
+				] 
 			}
 		})
 	]

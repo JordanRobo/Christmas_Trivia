@@ -7,15 +7,14 @@
 
   let players = {};
   let lastBuzzedPlayer: string;
-  let buzzInAccepted = true;
-  let sortedPlayers = [];
+  let buzzInAccepted= true;
+  let sortedPlayers: any[];
 
   const unsubscribe = gameStore.subscribe(state => {
     ({ players, lastBuzzedPlayer, buzzInAccepted } = state);
   });
 
   $: sortedPlayers = Object.entries(players).sort((a, b) => {
-    // Assuming each entry is of the form [playerName, { score }]
     return b[1].score - a[1].score; // Sort in descending order of score
   });
 
@@ -49,21 +48,31 @@
   });
 </script>
 
-<div class="text-center">
-  <div class="py-4">
+<main class="container text-center p-4">
+<div class="">
+  <div class="card p-4 variant-soft my-8">
     <h1 class="h1">Player Dashboard</h1>
   </div>
-  <div class="py-4">
-    <ul class="p text-4xl">
-      {#each sortedPlayers as [playerName, { score }] (playerName)}
-      <li>{score} - {playerName}</li>
-    {/each}
-    </ul>
-  </div>
-  <div class="py-4">
+    <table class="table-fixed w-full card variant-soft my-8">
+      <thead>
+        <tr>
+          <th class="card variant-filled-primary w-3/4 text-2xl">Player Name</th>
+          <th class="card variant-filled-primary w-1/4 text-2xl">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each sortedPlayers as [playerName, { score }] (playerName)}
+        <tr>
+          <td class="h1 text-4xl">{playerName}</td>
+          <td class="h1 text-4xl">{score}</td>
+        </tr>
+        {/each}
+      </tbody>
+    </table>
+  <div class="my-8">
     <div class="card variant-ghost-tertiary py-4">
-      <p class="p text-2xl text-white">Last player buzzed in</p>
-      <p class="p text-4xl text-white">
+      <p class="p text-2xl">Last player buzzed in</p>
+      <p class="p text-4xl">
         {#if lastBuzzedPlayer && !buzzInAccepted}
           {lastBuzzedPlayer}
         {/if}
@@ -71,3 +80,4 @@
     </div>
   </div>
 </div>
+</main>
