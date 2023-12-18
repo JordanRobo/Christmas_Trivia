@@ -26,6 +26,7 @@
   }
 
 </script>
+
 <main class="">
 <div class="card p-6 variant-ghost-secondary">
   <div class="my-4 text-center">

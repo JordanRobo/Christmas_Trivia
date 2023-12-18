@@ -6,8 +6,8 @@ interface Player {
 
 interface GameState {
     players: Record<string, Player>;
-    currentPlayer: string;
-    lastBuzzedPlayer: string;
+    currentPlayer: string | null;
+    lastBuzzedPlayer: string | null;
     buzzInAccepted: boolean;
     currentPlayerScore?: number;
   }
@@ -64,6 +64,16 @@ function updatePlayerScore(playerName: string, newScore: number): void {
   });
 }
 
+function resetGame(): void {
+  gameStore.set({
+    players: {},
+    lastBuzzedPlayer: null,
+    buzzInAccepted: false,
+    currentPlayer: null,
+    currentPlayerScore: 0
+  });
+}
+
 export default {
     subscribe: gameStore.subscribe,
     set: gameStore.set,
@@ -71,5 +81,6 @@ export default {
     setLastBuzzedPlayer,
     setBuzzInAccepted,
     updatePlayerScore,
-    setCurrentPlayer
+    setCurrentPlayer,
+    resetGame
   };

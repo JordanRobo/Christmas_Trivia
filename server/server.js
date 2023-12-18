@@ -69,13 +69,20 @@ io.on('connection', (socket) => {
     }
   });
 
+  // Handle a game reset
+  socket.on('resetGame', () => {
+    console.log('Resetting game');
+    players = {};
+    io.emit('playersListUpdate', players);
+  });
+
   socket.on('connect_error', (err) => {
     console.error('Socket connection error:', err);
-});
+  });
 
   socket.on('connect_timeout', (timeout) => {
     console.error('Socket connection timeout:', timeout);
-});
+  });
 });
 
 const PORT = process.env.PORT || 3001;
